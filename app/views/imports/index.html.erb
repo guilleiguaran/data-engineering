@@ -2,18 +2,16 @@
 
 <table>
   <tr>
+    <th>Import date</th>
     <th>Total amount</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @imports.each do |import| %>
   <tr>
+    <td><%= import.created_at %></td>
     <td><%= import.total_amount %></td>
-    <td><%= link_to 'Show', import %></td>
-    <td><%= link_to 'Edit', edit_import_path(import) %></td>
-    <td><%= link_to 'Destroy', import, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
