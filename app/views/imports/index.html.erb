@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Import date</th>
     <th>Total amount</th>
     <th></th>
@@ -10,6 +11,7 @@
 
 <% @imports.each do |import| %>
   <tr>
+    <td><%= import.id %></td>
     <td><%= import.created_at %></td>
     <td><%= import.total_amount %></td>
   </tr>
