@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002230146) do
+ActiveRecord::Schema.define(:version => 20121002231902) do
 
   create_table "imports", :force => true do |t|
     t.float    "total_amount"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "completed",    :default => false
   end
 
   create_table "items", :force => true do |t|

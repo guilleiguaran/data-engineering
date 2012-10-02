@@ -17,3 +17,6 @@ gem 'jquery-rails'
 
 # Use puma as the app server
 gem 'puma'
+
+# Basic background jobs
+gem 'girl_friday'
