@@ -13,8 +13,9 @@ class Import < ActiveRecord::Base
   private
 
   def import_file
-    # Iterate through the file
-    CSV.foreach(self.file, :col_sep => "\t", :headers => true) do |row|
+    # Iterate through the file and sum total
+    total_amount = 0
+    CSV.foreach(self.file.path, :col_sep => "\t", headers: true) do |row|
       purchaser = row["purchaser name"]
       description = row["item description"]
       price = row["item price"]
@@ -24,6 +25,8 @@ class Import < ActiveRecord::Base
       merchant = Merchant.where(name: merchant_name, address: merchant_address).first_or_create!
       merchant.items.where(description: description, price: price).first_or_create!
       User.where(name: purchaser).first_or_create!
+      total_amount += price.to_f * count.to_i
     end
+    self.update_attribute(:total_amount, total_amount)
   end
 end
