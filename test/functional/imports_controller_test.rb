@@ -27,6 +27,8 @@ class ImportsControllerTest < ActionController::TestCase
     assert_equal '123 Fake St', merchant.address
     assert_equal 1, merchant.items.count
 
+    assert_equal 4, Purchase.count
+
     assert_redirected_to imports_path
   end
 end

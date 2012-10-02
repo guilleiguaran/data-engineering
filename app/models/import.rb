@@ -23,8 +23,9 @@ class Import < ActiveRecord::Base
       merchant_address = row["merchant address"]
       merchant_name = row["merchant name"]
       merchant = Merchant.where(name: merchant_name, address: merchant_address).first_or_create!
-      merchant.items.where(description: description, price: price).first_or_create!
-      User.where(name: purchaser).first_or_create!
+      item = merchant.items.where(description: description, price: price).first_or_create!
+      user = User.where(name: purchaser).first_or_create!
+      Purchase.create!(user: user, item: item, count: count)
       total_amount += price.to_f * count.to_i
     end
     self.update_attribute(:total_amount, total_amount)
