@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  description: MyText
-  price: 1.5
+macbook:
+  description: $200 off on $1199 Macbook Pro
+  price: 999.0
 
-two:
-  description: MyText
-  price: 1.5
+ticket:
+  description: $500 ticket to Washington for $300
+  price: 300.0
