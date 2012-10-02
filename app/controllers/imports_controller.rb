@@ -28,8 +28,8 @@ class ImportsController < ApplicationController
 
     respond_to do |format|
       if @import.save
-        format.html { redirect_to @import, notice: 'Import was successfully created.' }
-        format.json { render json: @import, status: :created, location: @import }
+        format.html { redirect_to imports_url, notice: 'Import was successfully created.' }
+        format.json { render json: @import, status: :created }
       else
         format.html { render action: "new" }
         format.json { render json: @import.errors, status: :unprocessable_entity }
