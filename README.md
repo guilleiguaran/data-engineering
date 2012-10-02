@@ -10,6 +10,11 @@ You should install the gem dependencies of the project with Bundler:
 
     bundle install
 
+And later you should create database and run migrations:
+
+    rake db:create
+    rake db:migrate
+
 
 ## Running Application
 
