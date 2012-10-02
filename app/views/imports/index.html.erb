@@ -1,27 +1,29 @@
-<h1>Listing imports</h1>
-
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Import date</th>
-    <th>Import status</th>
-    <th>Total amount</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @imports.each do |import| %>
-  <tr>
-    <td><%= import.id %></td>
-    <td><%= import.created_at %></td>
-    <td><%= import.completed ? "Completed" : "In progress" %></td>
-    <td><%= import.total_amount %></td>
-  </tr>
-<% end %>
+<%- model_class = Import -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:total_amount) %></th>
+      <th><%= model_class.human_attribute_name(:completed) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @imports.each do |import| %>
+      <tr>
+        <td><%= import.id %></td>
+        <td><%= import.total_amount %></td>
+        <td><%= import.completed ? "Completed" : "Processing" %></td>
+        <td><%=l import.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'Reload', imports_path %>
-
-<%= link_to 'New Import', new_import_path %>
+<%= link_to "Reload imports", imports_path, :class => 'btn btn-primary' %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_import_path,
+            :class => 'btn btn-primary' %>

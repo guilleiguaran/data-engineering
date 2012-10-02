@@ -11,9 +11,11 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
+gem 'turbolinks'
 
 # Use puma as the app server
 gem 'puma'

@@ -1,21 +1,14 @@
-<%= form_for(@import) do |f| %>
-  <% if @import.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@import.errors.count, "error") %> prohibited this import from being saved:</h2>
-
-      <ul>
-      <% @import.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @import, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :file, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :file, :class => 'btn' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :file %><br />
-    <%= f.file_field :file %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                imports_path, :class => 'btn' %>
   </div>
 <% end %>
